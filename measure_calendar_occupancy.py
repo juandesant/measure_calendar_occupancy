@@ -26,6 +26,7 @@ import os
 from exchangelib import Credentials, Configuration, Account, DELEGATE, EWSDateTime
 import datetime as dt
 from astropy import units as u
+import functools 
 
 email  = os.environ['EWS_EMAIL']
 user   = os.environ['EWS_USER']
