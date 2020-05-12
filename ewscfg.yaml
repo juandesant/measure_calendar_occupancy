@@ -1,4 +1,4 @@
-EWS_EMAIL:  user@example.org
-EWS_SERVER: exchange.example.org
-EWS_USER:   user
-EWS_PWDKEY: MYSCRIPT_PWD_KEY
+EWS_EMAIL:  user@example.org     # Your email
+EWS_SERVER: exchange.example.org # Your server
+EWS_USER:   user                 # Your user
+EWS_PWDKEY: MYSCRIPT_PWD_KEY     # You need this to retrieve the password from the keyring
