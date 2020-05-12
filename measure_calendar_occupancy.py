@@ -64,11 +64,12 @@ occupation_per_week = {}
 start_date = date_range_start
 for week in range(0,num_weeks):
     end_date   = start_date + delta
-
-    ews_start = account.default_timezone.localize(
+    
+    ews_tz = account.default_timezone
+    ews_start = ews_tz.localize(
         EWSDateTime(start_date.year, start_date.month, start_date.day)
     )
-    ews_end   = account.default_timezone.localize(
+    ews_end   = ews_tz.localize(
         EWSDateTime(end_date.year, end_date.month, end_date.day)
     )
     
