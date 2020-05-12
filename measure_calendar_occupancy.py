@@ -12,13 +12,13 @@ Usage:
 Options:
   -h --help                    Show this screen.
   -v --version                 Show version.
-  -u --user=USER               Username to login to Exchange
-  -d --server_domain=DOMAIN    Domain for the server.
-  -e --email=EMAIL             Email of the Username [default: USER+"@"+DOMAIN]
-  --ad_domain=AD_DOMAIN        AD domain [default="ad"]
-  --delegate=DELEGATE          Username for which you will be a DELEGATE [default: USER]
-  --server=SERVER              Server to log in to. [default="exchange."+DOMAIN]
-  --start_date=DATE            Date for which to do the profile [default: datetime.date.now()]
+  [-u --user=USER]               Username to login to Exchange
+  [-d --server_domain=DOMAIN]    Domain for the server.
+  [-e --email=EMAIL]             Email of the Username [default: USER+"@"+DOMAIN]
+  [--ad_domain=AD_DOMAIN]        AD domain [default="ad"]
+  [--delegate=DELEGATE]          Username for which you will be a DELEGATE [default: USER]
+  [--server=SERVER]              Server to log in to.
+  [--start_date=DATE]            Date for which to do the profile [default: datetime.date.now()]
   --weeks=WEEKS                Number of weeks for which to do the profile [default: 1]
 """
 
@@ -32,13 +32,14 @@ import keyring # requires having used keyring.set_password(pwdkey, user, the_pas
 
 ewsfile = os.environ["HOME"]+"/.ewscfg.yaml"
 
+# Read configuration data from ewscfg.yaml file
 with open(ewsfile) as f:
     cfg_data = yaml.load(f, Loader=yaml.FullLoader)
     
-email  = cfg_data['EWS_EMAIL']
-user   = cfg_data['EWS_USER']
-server = cfg_data['EWS_SERVER']
-pwdkey = cfg_data['EWS_PWDKEY']
+email  = cfg_data['EWS_EMAIL']  # Default email
+user   = cfg_data['EWS_USER']   # Default user
+server = cfg_data['EWS_SERVER'] # Default server value
+pwdkey = cfg_data['EWS_PWDKEY'] # Allows searching of the password in the keyring
 pwd    = keyring.get_password(pwdkey, user)
 
 creds = Credentials(username=user, password=pwd)
