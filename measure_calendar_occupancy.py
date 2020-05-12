@@ -78,7 +78,8 @@ for week in range(0,num_weeks):
     # Get only durations
     entries = calendar_entries.values_list("subject", "duration")
     # Decode durations by converting into
-    durations = [x[0][1:].lower() for x in durations]
+    durations = [x[1] for x in entries]
+    durations = [x[1:].lower() for x in durations]
     durations = ["day ".join(z) for z in [x.split("d") for x in durations]]
     durations = ["".join(z) for z in [x.split("t") for x in durations]]
     durations = ["hour ".join(z) for z in [x.split("h") for x in durations]]
