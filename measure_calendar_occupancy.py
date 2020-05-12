@@ -59,8 +59,8 @@ def reduce_sum(items):
 
 occupation_per_week = {}
 
-start_date = year_start
-for week in range(1,num_weeks):
+start_date = date_range_start
+for week in range(0,num_weeks):
     end_date   = start_date + delta
 
     ews_start = account.default_timezone.localize(
