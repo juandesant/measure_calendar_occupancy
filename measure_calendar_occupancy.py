@@ -49,11 +49,10 @@ account = Account(
 
 
 # Getting data for each week
-year=2020
-num_weeks = 25
-
-year_start = dt.datetime(year,1,1)
 delta = dt.timedelta(days=7)
+date_range_start = dt.datetime(2019,12,30)-0*delta
+num_weeks = 20
+
 
 def reduce_sum(items):
     return functools.reduce(lambda x,y:x+y, items)
