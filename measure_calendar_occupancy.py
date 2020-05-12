@@ -1,3 +1,27 @@
+#!/usr/bin/env python
+"""
+Measure the level of occupancy of your calendar.
+
+Usage:
+  measure_calendar_occupancy.py
+  measure_calendar_occupancy.py -h | --help
+  measure_calendar_occupancy.py -v | --version
+  measure_calendar_occupancy.py -u=USER -d=DOMAIN
+  measure_calendar_occupancy.py -u=USER --d=DOMAIN --e=EMAIL
+
+Options:
+  -h --help                    Show this screen.
+  -v --version                 Show version.
+  -u --user=USER               Username to login to Exchange
+  -d --server_domain=DOMAIN    Domain for the server.
+  -e --email=EMAIL             Email of the Username [default: USER+"@"+DOMAIN]
+  --ad_domain=AD_DOMAIN        AD domain [default="ad"]
+  --delegate=DELEGATE          Username for which you will be a DELEGATE [default: USER]
+  --server=SERVER              Server to log in to. [default="exchange."+DOMAIN]
+  --start_date=DATE            Date for which to do the profile [default: datetime.date.now()]
+  --weeks=WEEKS                Number of weeks for which to do the profile [default: 1]
+"""
+
 import os
 from exchangelib import Credentials, Configuration, Account, DELEGATE, EWSDateTime
 import datetime as dt
