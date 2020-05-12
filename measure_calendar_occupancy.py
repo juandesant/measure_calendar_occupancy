@@ -104,5 +104,5 @@ for week in range(0,num_weeks):
     occupation_per_week[start_date] = fraction
     start_date = end_date
 
-import pandas as pd
-df = pd.DataFrame(zip(occupation_per_week.keys(), occupation_per_week.values()))
+from pprint import pprint
+pprint(occupation_per_week)
