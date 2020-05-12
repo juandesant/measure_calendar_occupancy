@@ -1,0 +1,4 @@
+EWS_EMAIL:  user@example.org
+EWS_SERVER: exchange.example.org
+EWS_USER:   user
+EWS_PWDKEY: MYSCRIPT_PWD_KEY
