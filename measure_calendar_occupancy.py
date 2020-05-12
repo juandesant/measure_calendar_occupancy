@@ -52,7 +52,8 @@ account = Account(
 # Getting data for each week
 delta = dt.timedelta(days=7)
 date_range_start = dt.datetime(2019,12,30)-0*delta
-num_weeks = 20
+num_weeks = 52
+work_hours_per_week = 35
 
 
 def reduce_sum(items):
@@ -98,7 +99,7 @@ for week in range(0,num_weeks):
     
     meetings_duration_in_secs = sum(reduced_duration_in_secs)
     
-    fraction = float(((meetings_duration_in_secs*u.s)/(35*u.hour)).to(1))
+    fraction = float(((meetings_duration_in_secs*u.s)/(work_hours_per_week*u.hour)).to(1))
     
     occupation_per_week[start_date] = fraction
     start_date = end_date
