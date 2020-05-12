@@ -97,7 +97,7 @@ for week in range(0,num_weeks):
     
     meetings_duration_in_secs = sum(reduced_duration_in_secs)
     
-    fraction = float((meetings_duration_in_secs*u.s/(30*u.hour)).to(1))
+    fraction = float(((meetings_duration_in_secs*u.s)/(35*u.hour)).to(1))
     
     occupation_per_week[start_date] = fraction
     start_date = end_date
