@@ -71,7 +71,10 @@ for week in range(0,num_weeks):
     )
     
     # Get calendar entries for the week
-    calendar_entries = account.calendar.filter(start__range=(ews_start, ews_end))
+    calendar_entries = account.calendar.filter(
+        start__range=(ews_start, ews_end),
+        categories__exists=False
+    )
     # Get only durations
     entries = calendar_entries.values_list("subject", "duration")
     # Decode durations by converting into
