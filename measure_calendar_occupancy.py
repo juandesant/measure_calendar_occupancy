@@ -27,11 +27,19 @@ from exchangelib import Credentials, Configuration, Account, DELEGATE, EWSDateTi
 import datetime as dt
 from astropy import units as u
 import functools 
+import yaml
+import keyring # requires having used keyring.set_password(pwdkey, user, the_password)
 
-email  = os.environ['EWS_EMAIL']
-user   = os.environ['EWS_USER']
-server = os.environ['EWS_SERVER']
-pwd    = os.environ['EWS_PWD']
+ewsfile = os.environ["HOME"]+"/.ewscfg.yaml"
+
+with open(ewsfile) as f:
+    cfg_data = yaml.load(f, Loader=yaml.FullLoader)
+    
+email  = cfg_data['EWS_EMAIL']
+user   = cfg_data['EWS_USER']
+server = cfg_data['EWS_SERVER']
+pwdkey = cfg_data['EWS_PWDKEY']
+pwd    = keyring.get_password(pwdkey, user)
 
 creds = Credentials(username=user, password=pwd)
 config = Configuration(server=server, credentials=creds)
